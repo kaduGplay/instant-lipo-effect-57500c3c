@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import creatorImage from "@/assets/creator-portrait.jpg";
+import creatorImage from "@/assets/creator-portrait.png";
 
 const CreatorSection = () => {
   const scrollToPricing = () => {
