@@ -72,10 +72,11 @@ const HeroSection = () => {
               <video
                 ref={videoRef}
                 src="/videos/hero-video.mp4"
+                poster="/videos/hero-video.mp4#t=0.1"
                 className="w-full h-full object-cover bg-background block"
                 controls={isPlaying}
                 playsInline
-                preload="auto"
+                preload="metadata"
               />
               {!isPlaying && (
                 <div 

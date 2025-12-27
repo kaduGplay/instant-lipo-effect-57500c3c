@@ -25,10 +25,11 @@ const VideoCard = ({ video, index }: { video: typeof resultVideos[0]; index: num
       <video
         ref={videoRef}
         src={video.src}
+        poster={`${video.src}#t=0.1`}
         className="w-full h-full object-cover"
         controls={isPlaying}
         playsInline
-        preload="auto"
+        preload="metadata"
       />
       {!isPlaying && (
         <div
