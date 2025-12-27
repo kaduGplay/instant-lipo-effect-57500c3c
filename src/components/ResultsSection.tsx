@@ -1,6 +1,52 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle } from "lucide-react";
-import resultsImage from "@/assets/results-showcase.jpg";
+import { CheckCircle, Play } from "lucide-react";
+import { useState, useRef } from "react";
+
+const resultVideos = [
+  { src: "/videos/result-1.mp4", label: "-45cm eliminados", session: "1ª sessão" },
+  { src: "/videos/result-2.mp4", label: "-38cm eliminados", session: "1ª sessão" },
+  { src: "/videos/result-3.mp4", label: "-42cm eliminados", session: "1ª sessão" },
+  { src: "/videos/result-4.mp4", label: "-35cm eliminados", session: "1ª sessão" },
+  { src: "/videos/result-5.mp4", label: "-40cm eliminados", session: "1ª sessão" },
+  { src: "/videos/result-6.mp4", label: "-45cm eliminados", session: "1ª sessão" },
+];
+
+const VideoCard = ({ video, index }: { video: typeof resultVideos[0]; index: number }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePlay = () => {
+    setIsPlaying(true);
+    videoRef.current?.play();
+  };
+
+  return (
+    <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 bg-secondary/30">
+      <video
+        ref={videoRef}
+        src={video.src}
+        className="w-full h-full object-cover"
+        controls={isPlaying}
+        playsInline
+        preload="metadata"
+      />
+      {!isPlaying && (
+        <div
+          className="absolute inset-0 flex items-center justify-center cursor-pointer bg-background/30"
+          onClick={handlePlay}
+        >
+          <div className="w-14 h-14 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
+            <Play className="w-6 h-6 text-primary-foreground ml-1" />
+          </div>
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background to-transparent p-4 pointer-events-none">
+        <p className="text-sm font-medium text-primary">{video.label}</p>
+        <p className="text-xs text-muted-foreground">{video.session}</p>
+      </div>
+    </div>
+  );
+};
 
 const ResultsSection = () => {
   const scrollToPricing = () => {
@@ -21,24 +67,9 @@ const ResultsSection = () => {
         </div>
 
         {/* Results Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div 
-              key={item}
-              className="group relative aspect-square rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300"
-            >
-              <img 
-                src={resultsImage} 
-                alt={`Resultado ${item}`}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-sm font-medium text-primary">-45cm eliminados</p>
-                  <p className="text-xs text-muted-foreground">1ª sessão</p>
-                </div>
-              </div>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12">
+          {resultVideos.map((video, index) => (
+            <VideoCard key={index} video={video} index={index} />
           ))}
         </div>
 
