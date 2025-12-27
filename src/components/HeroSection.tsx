@@ -9,8 +9,9 @@ const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const goToCheckout = () => {
-    window.open(CHECKOUT_URL, '_blank');
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById('pricing');
+    pricingSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handlePlayVideo = () => {
@@ -96,7 +97,7 @@ const HeroSection = () => {
             <Button 
               variant="cta" 
               size="xxl" 
-              onClick={goToCheckout}
+              onClick={scrollToPricing}
               className="group w-full sm:w-auto text-sm sm:text-base px-4 sm:px-8"
             >
               <span className="whitespace-nowrap">Quero Acesso Imediato</span>
