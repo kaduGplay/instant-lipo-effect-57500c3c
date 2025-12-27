@@ -94,9 +94,9 @@ const PricingSection = () => {
               </div>
 
               {/* CTA */}
-              <Button variant="cta" size="xxl" className="w-full">
-                <Flame className="w-5 h-5" />
-                <span>Quero Acesso Imediato por R$97</span>
+              <Button variant="cta" size="xxl" className="w-full flex-wrap text-center leading-tight">
+                <Flame className="w-5 h-5 flex-shrink-0" />
+                <span className="min-w-0">Quero Acesso Imediato por R$97</span>
               </Button>
 
               {/* Guarantee */}

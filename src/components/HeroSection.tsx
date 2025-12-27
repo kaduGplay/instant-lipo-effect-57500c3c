@@ -65,25 +65,27 @@ const HeroSection = () => {
           </div>
 
           {/* Video Player */}
-          <div className="relative inline-block animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <video
-              ref={videoRef}
-              src="/videos/hero-video.mp4"
-              className="max-w-full h-auto rounded-lg"
-              controls={isPlaying}
-              playsInline
-              preload="auto"
-            />
-            {!isPlaying && (
-              <div 
-                className="absolute inset-0 flex items-center justify-center cursor-pointer group"
-                onClick={handlePlayVideo}
-              >
-                <div className="w-16 h-16 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
-                  <Play className="w-7 h-7 text-primary-foreground ml-1" />
+          <div className="relative w-full max-w-xs mx-auto animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            <div className="relative aspect-[9/16] overflow-hidden rounded-lg">
+              <video
+                ref={videoRef}
+                src="/videos/hero-video.mp4"
+                className="w-full h-full object-cover bg-background block"
+                controls={isPlaying}
+                playsInline
+                preload="auto"
+              />
+              {!isPlaying && (
+                <div 
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+                  onClick={handlePlayVideo}
+                >
+                  <div className="w-16 h-16 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
+                    <Play className="w-7 h-7 text-primary-foreground ml-1" />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* CTA Button */}
