@@ -1,6 +1,6 @@
 import { Clock, DollarSign, Play, CheckCircle, Video, Award, Gift, Users } from "lucide-react";
 import criolipoliseBonus from "@/assets/criolipolise-bonus.png";
-
+import bodyContour from "@/assets/body-contour.png";
 const benefits = [
   {
     icon: Clock,
@@ -48,14 +48,25 @@ const BenefitsSection = () => {
   return (
     <section className="py-20 bg-gradient-radial">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4">
-            Confira O Que Você Vai{" "}
-            <span className="text-gradient-gold">Dominar</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Com o Método Lipo Manual HD
-          </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="order-2 lg:order-1">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4">
+              Confira O Que Você Vai{" "}
+              <span className="text-gradient-gold">Dominar</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl">
+              Com o Método Lipo Manual HD
+            </p>
+          </div>
+          <div className="order-1 lg:order-2 flex justify-center">
+            <div className="relative">
+              <img 
+                src={bodyContour} 
+                alt="Resultados da Lipo Manual - Redução de medidas"
+                className="w-full max-w-md rounded-2xl shadow-elegant"
+              />
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
