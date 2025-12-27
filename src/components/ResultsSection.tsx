@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Play } from "lucide-react";
-import resultsPoster from "@/assets/results-showcase.jpg";
+import { CheckCircle, Volume2 } from "lucide-react";
 import { useState, useRef } from "react";
 
 const resultVideos = [
@@ -12,13 +11,15 @@ const resultVideos = [
   { src: "/videos/result-6.mp4", label: "-45cm eliminados", session: "1ª sessão" },
 ];
 
-const VideoCard = ({ video }: { video: typeof resultVideos[0]; index: number }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const VideoCard = ({ video }: { video: typeof resultVideos[0] }) => {
+  const [hasAudio, setHasAudio] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handlePlay = () => {
-    setIsPlaying(true);
+  const handleEnableAudio = () => {
     if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.muted = false;
+      setHasAudio(true);
       videoRef.current.play();
     }
   };
@@ -28,22 +29,22 @@ const VideoCard = ({ video }: { video: typeof resultVideos[0]; index: number }) 
       <video
         ref={videoRef}
         src={video.src}
-        poster={resultsPoster}
         className="w-full h-full object-cover"
-        controls={isPlaying}
+        controls={hasAudio}
         playsInline
-        preload="metadata"
+        autoPlay
+        loop
         muted
-        onPlay={() => setIsPlaying(true)}
+        preload="auto"
       />
 
-      {!isPlaying && (
+      {!hasAudio && (
         <div
-          className="absolute inset-0 flex items-center justify-center cursor-pointer bg-background/30"
-          onClick={handlePlay}
+          className="absolute inset-0 flex items-center justify-center cursor-pointer"
+          onClick={handleEnableAudio}
         >
           <div className="w-14 h-14 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
-            <Play className="w-6 h-6 text-primary-foreground ml-1" />
+            <Volume2 className="w-6 h-6 text-primary-foreground" />
           </div>
         </div>
       )}
@@ -55,7 +56,6 @@ const VideoCard = ({ video }: { video: typeof resultVideos[0]; index: number }) 
     </div>
   );
 };
-
 const CHECKOUT_URL = "https://checkout.institutoduramais.site/VCCL1O8SCNJ9";
 
 const ResultsSection = () => {
@@ -79,7 +79,7 @@ const ResultsSection = () => {
         {/* Results Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-12">
           {resultVideos.map((video, index) => (
-            <VideoCard key={index} video={video} index={index} />
+            <VideoCard key={index} video={video} />
           ))}
         </div>
 
