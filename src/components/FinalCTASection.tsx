@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Flame } from "lucide-react";
 
+const CHECKOUT_URL = "https://checkout.institutoduramais.site/VCCL1O8SCNJ9";
+
 const FinalCTASection = () => {
-  const scrollToPricing = () => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  const goToCheckout = () => {
+    window.open(CHECKOUT_URL, '_blank');
   };
 
   return (
@@ -48,7 +50,7 @@ const FinalCTASection = () => {
             <Button 
               variant="cta" 
               size="xxl"
-              onClick={scrollToPricing}
+              onClick={goToCheckout}
               className="group"
             >
               <Flame className="w-5 h-5" />
