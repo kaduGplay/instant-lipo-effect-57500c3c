@@ -28,7 +28,7 @@ const VideoCard = ({ video, index }: { video: typeof resultVideos[0]; index: num
         className="w-full h-full object-cover"
         controls={isPlaying}
         playsInline
-        preload="metadata"
+        preload="auto"
       />
       {!isPlaying && (
         <div
