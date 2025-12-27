@@ -65,46 +65,39 @@ const HeroSection = () => {
           </div>
 
           {/* Video Player */}
-          <div className="relative max-w-sm mx-auto rounded-2xl overflow-hidden shadow-elegant border-gradient animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <div className="aspect-[9/16] bg-secondary/50 backdrop-blur-sm relative">
-              <video
-                ref={videoRef}
-                src="/videos/hero-video.mp4"
-                className="w-full h-full object-cover"
-                controls={isPlaying}
-                playsInline
-                preload="auto"
-              />
-              {!isPlaying && (
-                <div 
-                  className="absolute inset-0 flex items-center justify-center cursor-pointer group"
-                  onClick={handlePlayVideo}
-                >
-                  <div className="w-20 h-20 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-primary-foreground ml-1" />
-                  </div>
-                </div>
-              )}
-            </div>
+          <div className="relative max-w-xs mx-auto rounded-2xl overflow-hidden shadow-elegant border border-primary/30 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            <video
+              ref={videoRef}
+              src="/videos/hero-video.mp4"
+              className="w-full h-auto block"
+              controls={isPlaying}
+              playsInline
+              preload="auto"
+            />
             {!isPlaying && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background to-transparent p-4">
-                <p className="text-sm text-muted-foreground">Aguarde... o vídeo já vai ser reproduzido!</p>
+              <div 
+                className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+                onClick={handlePlayVideo}
+              >
+                <div className="w-16 h-16 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
+                  <Play className="w-7 h-7 text-primary-foreground ml-1" />
+                </div>
               </div>
             )}
           </div>
 
           {/* CTA Button */}
-          <div className="pt-4 animate-fade-up" style={{ animationDelay: '0.5s' }}>
+          <div className="pt-4 animate-fade-up px-4" style={{ animationDelay: '0.5s' }}>
             <Button 
               variant="cta" 
               size="xxl" 
               onClick={scrollToPricing}
-              className="group"
+              className="group w-full sm:w-auto text-sm sm:text-base px-4 sm:px-8"
             >
-              <span>Quero Acesso Imediato</span>
-              <CheckCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <span className="whitespace-nowrap">Quero Acesso Imediato</span>
+              <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform flex-shrink-0" />
             </Button>
-            <p className="text-sm text-muted-foreground mt-4">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">
               🔥 Apenas <span className="text-accent font-bold">02 vagas</span> restantes este mês
             </p>
           </div>
