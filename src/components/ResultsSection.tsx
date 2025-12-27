@@ -13,6 +13,7 @@ const resultVideos = [
 
 const VideoCard = ({ video, index }: { video: typeof resultVideos[0]; index: number }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handlePlay = () => {
@@ -20,16 +21,25 @@ const VideoCard = ({ video, index }: { video: typeof resultVideos[0]; index: num
     videoRef.current?.play();
   };
 
+  const handleLoadedData = () => {
+    setIsLoaded(true);
+    // Pausa no primeiro frame para mostrar a thumbnail
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0.1;
+    }
+  };
+
   return (
     <div className="group relative aspect-[3/4] rounded-2xl overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 bg-secondary/30">
       <video
         ref={videoRef}
         src={video.src}
-        poster={`${video.src}#t=0.1`}
         className="w-full h-full object-cover"
         controls={isPlaying}
         playsInline
-        preload="metadata"
+        preload="auto"
+        muted
+        onLoadedData={handleLoadedData}
       />
       {!isPlaying && (
         <div
