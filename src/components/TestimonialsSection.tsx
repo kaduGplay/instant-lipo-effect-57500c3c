@@ -1,4 +1,4 @@
-import { Play, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
@@ -33,18 +33,6 @@ const TestimonialsSection = () => {
           <p className="text-muted-foreground text-lg">
             Após Aplicar a Lipo Manual
           </p>
-        </div>
-
-        {/* Video Testimonial */}
-        <div className="max-w-3xl mx-auto mb-16">
-          <div className="aspect-video rounded-2xl overflow-hidden border-gradient bg-secondary/30 flex items-center justify-center group cursor-pointer hover:bg-secondary/50 transition-colors">
-            <div className="text-center space-y-4">
-              <div className="w-20 h-20 mx-auto rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
-                <Play className="w-8 h-8 text-primary-foreground ml-1" />
-              </div>
-              <p className="text-muted-foreground">Aperte o play para ver os depoimentos</p>
-            </div>
-          </div>
         </div>
 
         {/* Written Testimonials */}
