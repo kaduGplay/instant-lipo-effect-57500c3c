@@ -73,7 +73,7 @@ const HeroSection = () => {
                 className="w-full h-full object-cover"
                 controls={isPlaying}
                 playsInline
-                preload="metadata"
+                preload="auto"
               />
               {!isPlaying && (
                 <div 
