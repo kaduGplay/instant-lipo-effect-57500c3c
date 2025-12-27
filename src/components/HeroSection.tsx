@@ -1,10 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Play, Clock, DollarSign, CheckCircle, Star, Award, Users, Sparkles } from "lucide-react";
+import { Clock, DollarSign, CheckCircle, Star, Sparkles, Play } from "lucide-react";
+import { useState, useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const scrollToPricing = () => {
     document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handlePlayVideo = () => {
+    setIsPlaying(true);
+    videoRef.current?.play();
   };
 
   return (
@@ -55,16 +64,33 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Video Placeholder */}
+          {/* Video Player */}
           <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-elegant border-gradient animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <div className="aspect-video bg-secondary/50 backdrop-blur-sm flex items-center justify-center group cursor-pointer hover:bg-secondary/70 transition-colors">
-              <div className="w-20 h-20 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
-                <Play className="w-8 h-8 text-primary-foreground ml-1" />
+            <div className="aspect-video bg-secondary/50 backdrop-blur-sm relative">
+              <video
+                ref={videoRef}
+                src="/videos/hero-video.mp4"
+                className="w-full h-full object-cover"
+                controls={isPlaying}
+                playsInline
+                preload="metadata"
+              />
+              {!isPlaying && (
+                <div 
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+                  onClick={handlePlayVideo}
+                >
+                  <div className="w-20 h-20 rounded-full bg-gradient-gold flex items-center justify-center shadow-gold group-hover:scale-110 transition-transform">
+                    <Play className="w-8 h-8 text-primary-foreground ml-1" />
+                  </div>
+                </div>
+              )}
+            </div>
+            {!isPlaying && (
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background to-transparent p-4">
+                <p className="text-sm text-muted-foreground">Aguarde... o vídeo já vai ser reproduzido!</p>
               </div>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background to-transparent p-4">
-              <p className="text-sm text-muted-foreground">Aguarde... o vídeo já vai ser reproduzido!</p>
-            </div>
+            )}
           </div>
 
           {/* CTA Button */}
