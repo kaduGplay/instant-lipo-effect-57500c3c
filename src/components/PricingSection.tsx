@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Flame, Shield, Clock } from "lucide-react";
+import trustBadges from "@/assets/trust-badges.png";
 
 const PricingSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -105,6 +106,15 @@ const PricingSection = () => {
                 <span className="text-sm">Compra 100% segura</span>
               </div>
             </div>
+          </div>
+
+          {/* Trust Badges */}
+          <div className="mt-8">
+            <img 
+              src={trustBadges} 
+              alt="Acesso Imediato - Selo de Qualidade - Pagamento Seguro" 
+              className="w-full max-w-lg mx-auto"
+            />
           </div>
         </div>
       </div>
