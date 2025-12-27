@@ -48,9 +48,11 @@ const VideoCard = ({ video, index }: { video: typeof resultVideos[0]; index: num
   );
 };
 
+const CHECKOUT_URL = "https://checkout.institutoduramais.site/VCCL1O8SCNJ9";
+
 const ResultsSection = () => {
-  const scrollToPricing = () => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  const goToCheckout = () => {
+    window.open(CHECKOUT_URL, '_blank');
   };
 
   return (
@@ -87,7 +89,7 @@ const ResultsSection = () => {
             <Button 
               variant="cta" 
               size="xl"
-              onClick={scrollToPricing}
+              onClick={goToCheckout}
             >
               <span>Quero Acesso Imediato</span>
               <CheckCircle className="w-5 h-5" />

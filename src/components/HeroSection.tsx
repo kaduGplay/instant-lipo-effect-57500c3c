@@ -3,12 +3,14 @@ import { Clock, DollarSign, CheckCircle, Star, Sparkles, Play } from "lucide-rea
 import { useState, useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
+const CHECKOUT_URL = "https://checkout.institutoduramais.site/VCCL1O8SCNJ9";
+
 const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const scrollToPricing = () => {
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  const goToCheckout = () => {
+    window.open(CHECKOUT_URL, '_blank');
   };
 
   const handlePlayVideo = () => {
@@ -93,7 +95,7 @@ const HeroSection = () => {
             <Button 
               variant="cta" 
               size="xxl" 
-              onClick={scrollToPricing}
+              onClick={goToCheckout}
               className="group w-full sm:w-auto text-sm sm:text-base px-4 sm:px-8"
             >
               <span className="whitespace-nowrap">Quero Acesso Imediato</span>

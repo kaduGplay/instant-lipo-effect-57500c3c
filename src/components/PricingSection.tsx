@@ -3,7 +3,13 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Flame, Shield, Clock } from "lucide-react";
 import trustBadges from "@/assets/trust-badges.png";
 
+const CHECKOUT_URL = "https://checkout.institutoduramais.site/VCCL1O8SCNJ9";
+
 const PricingSection = () => {
+  const goToCheckout = () => {
+    window.open(CHECKOUT_URL, '_blank');
+  };
+
   const [timeLeft, setTimeLeft] = useState({
     minutes: 50,
     seconds: 33
@@ -95,7 +101,7 @@ const PricingSection = () => {
               </div>
 
               {/* CTA */}
-              <Button variant="cta" size="xxl" className="w-full flex-wrap text-center leading-tight">
+              <Button variant="cta" size="xxl" className="w-full flex-wrap text-center leading-tight" onClick={goToCheckout}>
                 <Flame className="w-5 h-5 flex-shrink-0" />
                 <span className="min-w-0">Quero Acesso Imediato por R$97</span>
               </Button>
