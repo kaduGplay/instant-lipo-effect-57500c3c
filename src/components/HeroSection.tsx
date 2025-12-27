@@ -65,11 +65,11 @@ const HeroSection = () => {
           </div>
 
           {/* Video Player */}
-          <div className="relative max-w-xs mx-auto rounded-2xl overflow-hidden shadow-elegant border border-primary/30 animate-fade-up" style={{ animationDelay: '0.4s' }}>
+          <div className="relative inline-block animate-fade-up" style={{ animationDelay: '0.4s' }}>
             <video
               ref={videoRef}
               src="/videos/hero-video.mp4"
-              className="w-full h-auto block"
+              className="max-w-full h-auto rounded-lg"
               controls={isPlaying}
               playsInline
               preload="auto"
