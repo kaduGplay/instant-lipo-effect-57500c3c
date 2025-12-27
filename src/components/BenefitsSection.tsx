@@ -1,4 +1,5 @@
 import { Clock, DollarSign, Play, CheckCircle, Video, Award, Gift, Users } from "lucide-react";
+import criolipoliseBonus from "@/assets/criolipolise-bonus.png";
 
 const benefits = [
   {
@@ -57,7 +58,7 @@ const BenefitsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {benefits.map((benefit, index) => (
             <div 
               key={index}
@@ -75,6 +76,46 @@ const BenefitsSection = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Criolipólise Bonus Highlight */}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-card/30 backdrop-blur-sm rounded-2xl border border-primary/30 p-6 md:p-10">
+            <div className="relative rounded-xl overflow-hidden">
+              <img 
+                src={criolipoliseBonus} 
+                alt="Bônus Criolipólise Caseira - Antes e Depois"
+                className="w-full h-auto object-cover rounded-xl"
+              />
+            </div>
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30">
+                <Gift className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-primary">BÔNUS EXCLUSIVO</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
+                Criolipólise Caseira
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Protocolo exclusivo para eliminar a gordura localizada com o poder do gelo. 
+                <span className="text-primary font-semibold"> Pode ser vendido como serviço EXTRA por R$65/SESSÃO!</span>
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">Técnica segura e eficaz</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">Resultados visíveis na primeira aplicação</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-foreground">Fonte de renda adicional</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
