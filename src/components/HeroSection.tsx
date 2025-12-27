@@ -65,8 +65,8 @@ const HeroSection = () => {
           </div>
 
           {/* Video Player */}
-          <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-elegant border-gradient animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <div className="aspect-video bg-secondary/50 backdrop-blur-sm relative">
+          <div className="relative max-w-sm mx-auto rounded-2xl overflow-hidden shadow-elegant border-gradient animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            <div className="aspect-[9/16] bg-secondary/50 backdrop-blur-sm relative">
               <video
                 ref={videoRef}
                 src="/videos/hero-video.mp4"
